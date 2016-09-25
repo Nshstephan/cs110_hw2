@@ -1,0 +1,39 @@
+function drawSpaces(count, spacesChunk) {
+if(count === 0){
+  return spacesChunk;
+}
+
+spacesChunk += " ";
+return drawSpaces(--count, spacesChunk)
+}
+
+function drawStars(count, starsChunk) {
+if(count === 0){
+  return starsChunk;
+}
+
+if(count == 1){
+  starsChunk += "*";
+}
+else {
+  starsChunk += "**";
+}
+
+return drawStars(--count, starsChunk)
+}
+
+function draw(spaceCount, starCount){
+if(spaceCount === -1) {
+  return 0;
+}
+
+const currentLine = drawSpaces(spaceCount, "") + drawStars(starCount, "");
+console.log(currentLine);
+draw(spaceCount-1, starCount+1);
+}
+
+function tirangleStars(lineCount){
+draw(lineCount-1, 1);
+}
+
+tirangleStars(5);
